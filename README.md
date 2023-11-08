@@ -7,7 +7,7 @@ tags:
   - whisper
   - claude
 ---
-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
+
 ## ✨ Features
 
 - Python
