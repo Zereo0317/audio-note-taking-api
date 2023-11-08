@@ -1,37 +1,126 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Audio Transcription</title>
+    <title>Audio Transcription And Brief Summary</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+
+        /* Styles for small screens (e.g., smartphones) */
+        @media (max-width: 600px) {
+            h1 {
+                padding: 10px;
+            }
+            form {
+                max-width: 100%;
+                padding: 10px;
+            }
+            /* Adjust other styles as needed */
+        }
+
+        /* Styles for larger screens (e.g., desktops) */
+        @media (min-width: 601px) {
+            h1 {
+                padding: 20px;
+            }
+            form {
+                max-width: 600px;
+                padding: 20px;
+            }
+            /* Adjust other styles as needed */
+        }
+        h1 {
+            background-color: #007bff;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0px 0px 5px #888888;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+        select, input[type="text"], input[type="file"], input[type="checkbox"] {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        input[type="checkbox"] {
+            margin-top: 0;
+            display: inline-block;
+            margin-right: 5px;
+        }
+        button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+        #loading {
+            display: none;
+            text-align: center;
+            padding: 10px;
+        }
+    </style>
 </head>
 <body>
-    <h1>Audio Transcription</h1>
-    <form action="/transcribe" method="post" enctype="multipart/form-data">
+    <h1>Audio Transcription And Brief Summary</h1>
+    <form action="/transcribe" method="post" enctype="multipart/form-data" onsubmit="showLoading()">
         <label for="input_format">Input Format:</label>
         <select name="input_format" id="input_format">
             <option value="youtube">YouTube</option>
-            <option value="local">Local File</option>
+            <option value="mp3">MP3 File</option>
+            <option value="m4a">M4a File</option>
         </select><br><br>
-
         <label for="url">YouTube URL:</label>
         <input type="text" name="url" id="url"><br><br>
-        <label for="file">MP3 File:</label>
-        <input type="file" name="file" id="file" accept=".mp3">
+        <label for="mp3_file">MP3 File:</label>
+        <input type="file" name="mp3_file" id="mp3_file" accept=".mp3">
+        <br><br>
+        <label for="m4a_file">M4a File:</label>
+        <input type="file" name="m4a_file" id="m4a_file" accept=".m4a">
         <br>
-        <label for="plain">Save as TXT:</label>
-        <input type="checkbox" name="plain" id="plain" value="true"><br><br>
+        <label>Save as:</label>
+        <label for="plain">TXT:</label>
+        <input type="checkbox" name="plain" id="plain" value="true">
+        <label for="srt">SRT:</label>
+        <input type="checkbox" name="srt" id="srt" value="true">
+        <label for="vtt">VTT:</label>
+        <input type="checkbox" name="vtt" id="vtt" value="true">
+        <label for="tsv">TSV:</label>
+        <input type="checkbox" name="tsv" id="tsv" value="true">
+        <label for="summarize">Summarize the audio?:</label>
+        <input type="checkbox" name="summarize" id="summarize" value="true"><br><br>
 
-        <label for="srt">Save as SRT:</label>
-        <input type="checkbox" name="srt" id="srt" value="true"><br><br>
-
-        <label for="vtt">Save as VTT:</label>
-        <input type="checkbox" name="vtt" id="vtt" value="true"><br><br>
-
-        <label for="tsv">Save as TSV:</label>
-        <input type="checkbox" name="tsv" id="tsv" value="true"><br><br>
-
-
-
-        <input type="submit" value="Transcribe">
+        <button type="submit" id="transcribeButton">Transcribe</button>
     </form>
+    <div id="loading">
+        Loading... <!-- You can replace this with your loading spinner or message -->
+    </div>
+
+    <script>
+        function showLoading() {
+            document.getElementById("loading").style.display = "block";
+            document.getElementById("transcribeButton").disabled = true; // Disable the submit button while loading
+        }
+    </script>
 </body>
 </html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Summary</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Add this viewport meta tag -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            background-color: #007BFF;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+        }
+        .container {
+            margin: 20px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .markdown {
+            margin: 20px 0;
+        }
+        .button {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Add media queries for responsiveness */
+        @media screen and (max-width: 768px) {
+            .container {
+                margin: 10px;
+                padding: 10px;
+            }
+            .button {
+                padding: 5px 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Summary</h1>
+    </div>
+    <div class="container">
+        <!-- Add a "Go Back" button to Select Page -->
+        <button class="button" onclick="goBack()">Go Back To Select Page</button>
+
+        <!-- Add a "Go Back" button to Home Page -->
+        <button class="button" onclick="goHome()">Go Back Home Page</button>
+
+        <!-- JavaScript function to go back to the desired URL -->
+        <script>
+            function goBack() {
+                // 获取my_list_str的值
+                url_encoded = '{{url_encoded}}'
+                // 构建带有参数的URL
+                var url = 'https://hac-ai.serveo.net/select_result?file_list=' + url_encoded
+                // 跳转到URL
+                window.location.href = url;
+            }
+        </script>
+
+        <!-- JavaScript function to go back to the Home Page -->
+        <script>
+            function goHome() {
+                window.location.href = 'https://hac-ai.serveo.net/';
+            }
+        </script>
+        
+        <div class="markdown">
+            {{ content | safe }}
+        </div>
+    </div>
+</body>
+</html>

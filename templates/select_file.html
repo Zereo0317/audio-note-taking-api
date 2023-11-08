@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Select File</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        h1 {
+            background-color: #007bff;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0px 0px 5px #888888;
+        }
+        select, input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px; /* Default font size for larger screens */
+        }
+        input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        /* Media query for smaller screens */
+        @media (max-width: 768px) {
+            select, input[type="submit"] {
+                font-size: 14px; /* Smaller font size for screens up to 768px wide */
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Select a file to check:</h1>
+    <form method="post">
+        <select name="selected_file">
+            {% for file in selectfile_list %}
+                <option value="{{ file }}">{{ file }}</option>
+            {% endfor %}
+        </select>
+        <br>
+        <input type="submit" value="Check File">
+    </form>
+</body>
+</html>
