@@ -7,7 +7,7 @@ tags:
   - whisper
   - claude
 ---
-
+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
 ## ✨ Features
 
 - Python
@@ -19,5 +19,5 @@ tags:
 - Add your claude session cookie to config.py
     - how to find your session cookie
     1. [Go to Claude](https://claude.ai/chats)
-    2. ![press f12](image.png)
-    3. ![Click application and Cookies then your can find your session cookie](image-1.png)
+    2. **Press f12** ![press f12](image.png)
+    3. **Click application and Cookies then your can find your session cookie** ![Click application and Cookies then your can find your session cookie](image-1.png)
