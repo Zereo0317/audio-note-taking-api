@@ -32,13 +32,13 @@ chex==0.1.7
 claude-api==1.0.17
 claude2==1.1.5
 click==8.1.7
-cloud-init==22.1
+#cloud-init
 cloudflared==1.0.0.2
 cmake==3.27.7
 colorama==0.4.3
 colored-traceback==0.3.0
 comm==0.1.4
-command-not-found==0.3
+#command-not-found==0.3
 configobj==5.0.6
 constantly==15.1.0
 contourpy==1.1.1
